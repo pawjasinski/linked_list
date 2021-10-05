@@ -25,8 +25,10 @@ Data_ptr* tail;
 int size;
 int max_size;
 public:
-LinkedList(): size(0), max_size(MAX_SIZE), head(nullptr), tail(nullptr) {}
+LinkedList():head(nullptr), tail(nullptr), size(0), max_size(MAX_SIZE) {}
 ~LinkedList();
+LinkedList(const LinkedList&);
+LinkedList& operator=(const LinkedList&);
 bool push_back(Data_msg* data) noexcept;
 bool push_front(Data_msg* data) noexcept;
 Data_msg* pop_back() noexcept;

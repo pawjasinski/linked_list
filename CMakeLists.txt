@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-option(BUILD_TESTS "Builds the ut tests" ON)
+option(BUILD_TESTS "Builds the ut tests" OFF)
 
 set(CMAKE_CXX_FLAGS "-g" ${CMAKE_CXX_FLAGS})
 

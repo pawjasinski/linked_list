@@ -1,5 +1,17 @@
 #include "list.h"
 
+LinkedList::LinkedList(const LinkedList& t)
+{
+    this->max_size = t.max_size;
+    this->size = t.size;
+}
+
+LinkedList& LinkedList::operator=(const LinkedList& t)
+{
+    this->max_size = t.max_size;
+    this->size = t.size;
+}
+
 bool LinkedList::push_back(Data_msg* data) noexcept
 {
     bool ret_value = true;
@@ -97,7 +109,7 @@ Data_msg* LinkedList::pop_back() noexcept
         free(tail);
         tmp->next = nullptr;
         tail = tmp;
-        -size;
+        --size;
         return ret;
     }
 }
