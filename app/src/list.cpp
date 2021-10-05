@@ -70,11 +70,11 @@ bool LinkedList::push_front(Data_msg* data) noexcept
 }
 Data_msg* LinkedList::pop_back() noexcept
 {
-    Data_msg* ret = tail->data;
     if(head == tail)
     {
         if(head != nullptr)
         {
+            Data_msg* ret = tail->data;
             free(tail);
             size = 0;
             head = nullptr;
@@ -86,23 +86,28 @@ Data_msg* LinkedList::pop_back() noexcept
             return nullptr;
         }
     }
-    free(tail);
-    --size;
-    Data_ptr* tmp = head;
-    while(tmp->next != nullptr)
+    else
     {
-        tmp = tmp->next;
+        Data_msg* ret = tail->data;
+        Data_ptr* tmp = head->next;
+        while(tmp == tail)
+        {
+            tmp = tmp->next;
+        }
+        free(tail);
+        tmp->next = nullptr;
+        tail = tmp;
+        -size;
+        return ret;
     }
-    tail = tmp;
-    return ret;
 }
 Data_msg* LinkedList::pop_front() noexcept
 {
-    Data_msg* ret = head->data;
     if(head == tail)
     {
         if(head != nullptr)
         {
+            Data_msg* ret = head->data;
             free(head);
             size = 0;
             head = nullptr;
@@ -114,6 +119,7 @@ Data_msg* LinkedList::pop_front() noexcept
             return nullptr;
         }
     }
+    Data_msg* ret = head->data;
     Data_ptr* tmp = head;
     head = head->next;
     free(tmp);

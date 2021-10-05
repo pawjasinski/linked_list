@@ -1,0 +1,3 @@
+set(APP_NAME LINKED_LIST_UT)
+
+project(${APP_NAME})

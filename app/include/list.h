@@ -2,6 +2,7 @@
 #define __LIST__H__
 #include <stdlib.h>
 #include <utility>
+#include <iostream>
 
 #define MAX_SIZE 100
 
@@ -39,7 +40,12 @@ inline int setsize(int new_size) noexcept
     this->size = new_size;
     return this->size;
 }
+friend std::ostream& operator<<(std::ostream& os, const Data_ptr* const dptr)
+{
+    return os << "(" <<dptr->data->para.first << ":" << dptr->data->para.second << ")";
+}
 };
+
 
 
 #endif // __LIST__H__
